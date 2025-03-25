@@ -1,4 +1,4 @@
-import { env } from '@/env'
+import { getUploadsRoute } from '@/infra/http/routes/get-uploads'
 import { uploadImageRoute } from '@/infra/http/routes/upload-image'
 import { transformSwaggerSchema } from '@/infra/http/transform-swagger-schema'
 import { fastifyCors } from '@fastify/cors'
@@ -50,8 +50,7 @@ server.register(fastifySwaggerUi, {
 })
 
 server.register(uploadImageRoute)
-
-console.log(env.DATABASE_URL)
+server.register(getUploadsRoute)
 
 server
   .listen({
